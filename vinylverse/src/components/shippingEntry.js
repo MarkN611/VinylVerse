@@ -20,7 +20,7 @@ const ShippingEntry = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/purchase/viewOrder", { state: { ...location.state, shipping } });
+    navigate("/purchase/shippingEntry", { state: { ...location.state, shipping } });
   };
 
   return (
