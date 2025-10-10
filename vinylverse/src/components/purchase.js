@@ -8,7 +8,7 @@ const Purchase = () => {
         card_holder_name: '', address_1: '', address_2: '', city: '', state: '', zip: '',   
     });
     const navigate = useNavigate();const handleSubmit = (e) => {
-        navigate('/purchase/paymentEntry', {order: order, setOrder: setOrder});}
+        navigate('/purchase/paymentEntry', {state: order, setOrder: setOrder});}
 
     console.log('order: ', order);
 

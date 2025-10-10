@@ -18,7 +18,7 @@ const PaymentEntry = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/purchase/paymentEntry", { state: { ...location.state, paymentInfo } });
+    navigate("/purchase/shippingEntry", { state: { ...location.state, paymentInfo } });
   };
 
   return (
