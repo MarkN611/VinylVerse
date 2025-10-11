@@ -14,8 +14,9 @@ const Purchase = () => {
 
     return (
         <div>
+            <h1>Enter Product Quantities</h1>
             <form onSubmit={handleSubmit}> 
-                <label>Product 1</label>
+                <label>Product 1:</label>
                 <input
                     type="number"
                     required
@@ -23,7 +24,7 @@ const Purchase = () => {
                         {order.buyQuantity[0] = e.target.value;}}
                 />
                 <br/>
-                <label>Product 2</label>
+                <label>Product 2:</label>
                 <input
                     type="number"
                     required

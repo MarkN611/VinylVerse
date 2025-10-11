@@ -25,7 +25,7 @@ const ShippingEntry = () => {
 
   return (
     <div>
-      <h2>Enter Shipping Information</h2>
+      <h1>Enter Shipping Information</h1>
       <form onSubmit={handleSubmit}>
         <label>Name:</label>
         <input name="name" onChange={handleChange} value={shipping.name} required />
