@@ -1,6 +1,7 @@
 import React from "react";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import '../styles/purchase.css';
 
 const Purchase = () => {
     const [order, setOrder] = useState({
@@ -13,7 +14,7 @@ const Purchase = () => {
     console.log('order: ', order);
 
     return (
-        <div>
+        <div className="purchase">
             <h1>Enter Product Quantities</h1>
             <form onSubmit={handleSubmit}> 
                 <label>Product 1:</label>

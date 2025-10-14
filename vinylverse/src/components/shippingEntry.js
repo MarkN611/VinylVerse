@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import '../styles/shippingEntry.css';
 
 const ShippingEntry = () => {
   const location = useLocation();

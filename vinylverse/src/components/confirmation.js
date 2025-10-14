@@ -1,5 +1,6 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
+import '../styles/confirmation.css';
 
 const CONFIRMATION_CODE = "VV-2025-0001"; //hard-coded
 

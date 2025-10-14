@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import '../styles/paymentEntry.css';
 
 const PaymentEntry = () => {
   const location = useLocation();
