@@ -1,0 +1,56 @@
+/* shippingEntry.css */
+
+.shipping-container {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem 3rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.shipping-container h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.shipping-form label {
+  display: block;
+  color: #555;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.shipping-form input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.shipping-form input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.shipping-form button {
+  width: 100%;
+  padding: 0.9rem;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.shipping-form button:hover {
+  background-color: #218838;
+}

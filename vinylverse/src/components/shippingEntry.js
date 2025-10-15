@@ -25,26 +25,65 @@ const ShippingEntry = () => {
   };
 
   return (
-    <div>
+    <div className="shipping-container">
       <h1>Enter Shipping Information</h1>
-      <form onSubmit={handleSubmit}>
-        <label>Name:</label>
-        <input name="name" onChange={handleChange} value={shipping.name} required />
 
-        <label>Address Line 1:</label>
-        <input name="addressLine1" onChange={handleChange} value={shipping.addressLine1} required />
+      <form className="shipping-form" onSubmit={handleSubmit}>
+        <label htmlFor="name">Full Name:</label>
+        <input
+          id="name"
+          name="name"
+          onChange={handleChange}
+          value={shipping.name}
+          required
+        />
 
-        <label>Address Line 2:</label>
-        <input name="addressLine2" onChange={handleChange} value={shipping.addressLine2} />
+        <label htmlFor="addressLine1">Address Line 1:</label>
+        <input
+          id="addressLine1"
+          name="addressLine1"
+          onChange={handleChange}
+          value={shipping.addressLine1}
+          required
+        />
 
-        <label>City:</label>
-        <input name="city" onChange={handleChange} value={shipping.city} required />
+        <label htmlFor="addressLine2">Address Line 2:</label>
+        <input
+          id="addressLine2"
+          name="addressLine2"
+          onChange={handleChange}
+          value={shipping.addressLine2}
+        />
 
-        <label>State:</label>
-        <input name="state" onChange={handleChange} value={shipping.state} required />
+        <label htmlFor="city">City:</label>
+        <input
+          id="city"
+          name="city"
+          onChange={handleChange}
+          value={shipping.city}
+          required
+        />
 
-        <label>ZIP:</label>
-        <input name="zip" onChange={handleChange} value={shipping.zip} required />
+        <label htmlFor="state">State:</label>
+        <input
+          id="state"
+          name="state"
+          onChange={handleChange}
+          value={shipping.state}
+          required
+        />
+
+        <label htmlFor="zip">ZIP Code:</label>
+        <input
+          id="zip"
+          name="zip"
+          type="text"
+          pattern="\d{5}"
+          title="Please enter a 5-digit ZIP code"
+          onChange={handleChange}
+          value={shipping.zip}
+          required
+        />
 
         <button type="submit">Next</button>
       </form>
