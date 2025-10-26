@@ -1,4 +1,8 @@
 /* shippingEntry.css */
+.shippingEntryBackground {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 1rem 1rem 1rem 1rem;
+}
 
 .shipping-container {
   max-width: 600px;
@@ -41,7 +45,7 @@
 .shipping-form button {
   width: 100%;
   padding: 0.9rem;
-  background-color: #28a745;
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -52,5 +56,11 @@
 }
 
 .shipping-form button:hover {
-  background-color: #218838;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(40, 167, 69, 0.4);
+  background: linear-gradient(135deg, #218838 0%, #1e7e4f 100%);
+}
+
+.shipping-form button:active {
+  transform: translateY(-1px);
 }

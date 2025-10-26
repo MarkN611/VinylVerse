@@ -15,7 +15,9 @@ const Purchase = () => {
 
     return (
         <div className="purchase">
-            <h1>Enter Product Quantities</h1>
+            <div className="purchase-header">
+                <h1>Enter Product Quantities</h1>
+            </div>
             <form onSubmit={handleSubmit}> 
                 <div className="form-row">
                     <label>Pink Floyd The Dark Side of the Moon Original 1973: </label>

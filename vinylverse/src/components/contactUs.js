@@ -3,7 +3,9 @@ import '../styles/contactUs.css';
 export default function ContactUs() {
   return (
     <div className="contactUs">
-      <h1> General Contact Information </h1>
+      <div className="section-header">
+        <h1> General Contact Information </h1>
+      </div>
       <div className="generalInfo">
         <p className='contactText'><b>Address:</b><br /> 
           VinylVerse Records<br />
@@ -20,9 +22,9 @@ export default function ContactUs() {
         </p>
 
       </div>
-
-      <h1> Department Contact Information </h1>
-
+      <div className="section-header">
+        <h1> Department Contact Information </h1>
+      </div>
       <table className="departmentInfoTable">
         <tr>
           <th>Department</th>
@@ -58,7 +60,9 @@ export default function ContactUs() {
       </table>
 
     <div className="FAQSection">
-      <h1> Frequently Asked Questions </h1>
+      <div className="section-header">
+        <h1> Frequently Asked Questions </h1>
+      </div>
       <div className= "question">
         <h3> Q1: How long does shipping take? </h3>
         <p> <b>A:</b> Standard shipping usually takes 3-5 business days within the U.S. International orders may take 7-14 business days depending on customs. </p>

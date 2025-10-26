@@ -41,7 +41,7 @@ export default function Confirmation() {
             <span className="label">Confirmation</span>
             <strong className="code">{CONFIRMATION_CODE}</strong>
           </div>
-          <button className="btn btn--ghost" onClick={copyCode}>Copy code</button>
+          <button className="btn btn--ghost--copy" onClick={copyCode}>Copy code</button>
         </div>
 
         <div className="confirm__meta">
