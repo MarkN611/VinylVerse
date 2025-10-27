@@ -31,10 +31,10 @@ const apiRequest = async (endpoint, options = {}) => {
 
 // Product API calls
 export const productAPI = {
-  // GET all products
+  // GET all products from inventory management microservice
   getProducts: async () => {
     try {
-      return await apiRequest('/products');
+      return await apiRequest('/inventory-management/inventory');
     } catch (error) {
       // Fallback mock data for testing while API is being set up
       console.warn('API call failed, using mock data:', error);
@@ -67,30 +67,35 @@ export const productAPI = {
     }
   },
   
-  // GET single product by ID
+  // GET single product by ID from inventory management microservice
   getProduct: async (productId) => {
-    return await apiRequest(`/products/${productId}`);
+    return await apiRequest(`/inventory-management/inventory/items/${productId}`);
+  },
+  
+  // GET products by name (optional query parameter)
+  getProductsByName: async (itemName) => {
+    return await apiRequest(`/inventory-management/inventory/items?name=${itemName}`);
   }
 };
 
 // Order API calls
 export const orderAPI = {
-  // POST create new order
+  // POST create new order to order processing microservice
   createOrder: async (orderData) => {
-    return await apiRequest('/orders', {
+    return await apiRequest('/order-processing/order', {
       method: 'POST',
       body: JSON.stringify(orderData),
     });
   },
   
-  // GET order by ID
+  // GET order by ID from order processing microservice
   getOrder: async (orderId) => {
-    return await apiRequest(`/orders/${orderId}`);
+    return await apiRequest(`/order-processing/order/${orderId}`);
   },
   
-  // GET all orders (if needed)
+  // GET all orders from order processing microservice (if needed)
   getOrders: async () => {
-    return await apiRequest('/orders');
+    return await apiRequest('/order-processing/order');
   }
 };
 
