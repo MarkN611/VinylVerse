@@ -86,8 +86,9 @@
 }
 
 .order-item {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 20px;
   align-items: center;
   padding: 20px;
   background: #f8f9fa;
@@ -109,11 +110,25 @@
 .quantity {
   color: #667eea;
   font-weight: 500;
-  background: white;
-  padding: 8px 16px;
-  border-radius: 20px;
-  border: 2px solid #667eea;
-  font-size: 0.95rem;
+  text-align: center;
+}
+
+.price {
+  color: #27ae60;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: right;
+}
+
+.order-total {
+  margin-top: 20px;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
 }
 
 .info-grid {

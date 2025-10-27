@@ -11,7 +11,7 @@ export default function Home() {
           <h1>Discover your next favorite record</h1>
           <p>Fresh drops, curated picks, and a checkout flow that does not fight you.</p>
           <div className="hero__cta">
-            <Link className="btn btn--primary" to="/products">Browse Products</Link>
+            <Link className="btn btn--primary" to="/purchase">Browse Products</Link>
             <Link className="btn btn--ghost" to="/purchase">Quick Purchase</Link>
           </div>
         </div>

@@ -1,17 +1,71 @@
-import React from "react";
-import {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import '../styles/purchase.css';
+import { productAPI } from '../services/api';
 
 const Purchase = () => {
-    const [order, setOrder] = useState({
-        buyQuantity: [0,0,0,0,0], credit_card_number: '', expir_date: '', cvvCode: '', 
-        card_holder_name: '', address_1: '', address_2: '', city: '', state: '', zip: '',   
-    });
-    const navigate = useNavigate();const handleSubmit = (e) => {
-        navigate('/purchase/paymentEntry', {state: order, setOrder: setOrder});}
+    const [products, setProducts] = useState([]);
+    const [buyQuantity, setBuyQuantity] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
-    console.log('order: ', order);
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                setLoading(true);
+                const data = await productAPI.getProducts();
+                setProducts(data);
+                setBuyQuantity(new Array(data.length).fill(''));
+            } catch (err) {
+                setError('Failed to load products');
+                console.error('Error fetching products:', err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProducts();
+    }, []);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Convert empty strings to 0 for processing
+        const processedQuantities = buyQuantity.map(qty => qty === '' ? 0 : parseInt(qty) || 0);
+        navigate('/purchase/paymentEntry', {
+            state: {
+                buyQuantity: processedQuantities,
+                products
+            }
+        });
+    };
+
+    const updateQuantity = (index, value) => {
+        const newQuantity = [...buyQuantity];
+        newQuantity[index] = value === '' ? '' : Math.max(0, parseInt(value) || 0);
+        setBuyQuantity(newQuantity);
+    };
+
+    if (loading) {
+        return (
+            <div className="purchase">
+                <div className="purchase-header">
+                    <h1>Loading Products...</h1>
+                </div>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="purchase">
+                <div className="purchase-header">
+                    <h1>Error Loading Products</h1>
+                    <p>{error}</p>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="purchase">
@@ -19,50 +73,20 @@ const Purchase = () => {
                 <h1>Enter Product Quantities</h1>
             </div>
             <form onSubmit={handleSubmit}> 
-                <div className="form-row">
-                    <label>Pink Floyd The Dark Side of the Moon Original 1973: </label>
-                    <input
-                        type="number"
-                        required
-                        onChange={(e) => 
-                            {order.buyQuantity[0] = e.target.value;}}
-                    />
-                    <br/>
-                </div>
-
-                <div className="form-row">
-                    <label>The Beatles Abbey Road Anniversary Edition LP: </label>
-                    <input
-                        type="number"
-                        required
-                        onChange={(e) => 
-                            {order.buyQuantity[1] = e.target.value;}}
-                    />
-                    <br/>
-                </div>
-
-                <div className="form-row">
-                    <label>Prince Purple Rain Vinyl (Limited Edition 40th Anniversary - Purple Splatter 140g): </label>
-                    <input
-                        type="number"
-                        required
-                        onChange={(e) => 
-                            {order.buyQuantity[1] = e.target.value;}}
-                    />
-                    <br/>
-                </div>
-
-                <div className="form-row">
-                    <label>Michael Jackson Thriller (25th Anniversary Edition) [2LP]: </label>
-                    <input
-                        type="number"
-                        required
-                        onChange={(e) => 
-                            {order.buyQuantity[1] = e.target.value;}}
-                    />
-                    <br/>
-                </div>
-                <button className='button'>Pay</button>
+                {products.map((product, index) => (
+                    <div key={product.id} className="form-row">
+                        <label>{product.name}: </label>
+                        <input
+                            type="number"
+                            min="0"
+                            value={buyQuantity[index] || ''}
+                            onChange={(e) => updateQuantity(index, e.target.value)}
+                            placeholder="0"
+                        />
+                        <br/>
+                    </div>
+                ))}
+                <button className='button' type="submit">Continue to Payment</button>
             </form>
         </div>
     );
