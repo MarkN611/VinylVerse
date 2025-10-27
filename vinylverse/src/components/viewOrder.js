@@ -17,9 +17,18 @@ const ViewOrder = () => {
     const orderData = location.state || {};
     
     //get order details from location state 
-    const [order, setOrder] = useState({
+    const [order] = useState({
         ...orderData  // This will merge any data passed from previous components
     });
+
+    // Calculate total price
+    const calculateTotal = () => {
+        if (!orderData.products || !orderData.buyQuantity) return 0;
+        return orderData.products.reduce((total, product, index) => {
+            const quantity = orderData.buyQuantity[index] || 0;
+            return total + (product.price * quantity);
+        }, 0);
+    };
 
     const handleConfirm = () => {
         navigate('/purchase/confirmation', {state: {order}});
@@ -39,15 +48,32 @@ const ViewOrder = () => {
                         Order Details
                     </h2>
                     <div className="order-items">
-                        <div className="order-item">
-                            <span className="product-name">Vinyl Record - Product 1</span>
-                            <span className="quantity">Qty: {order.buyQuantity?.[0] || 0}</span>
-                        </div>
-                        <div className="order-item">
-                            <span className="product-name">Vinyl Record - Product 2</span>
-                            <span className="quantity">Qty: {order.buyQuantity?.[1] || 0}</span>
-                        </div>
+                        {orderData.products && orderData.buyQuantity ? (
+                            orderData.products.map((product, index) => {
+                                const quantity = orderData.buyQuantity[index] || 0;
+                                if (quantity > 0) {
+                                    return (
+                                        <div key={product.id} className="order-item">
+                                            <span className="product-name">{product.name}</span>
+                                            <span className="quantity">Qty: {quantity}</span>
+                                            <span className="price">${(product.price * quantity).toFixed(2)}</span>
+                                        </div>
+                                    );
+                                }
+                                return null;
+                            })
+                        ) : (
+                            <div className="order-item">
+                                <span className="product-name">No products selected</span>
+                            </div>
+                        )}
                     </div>
+                    
+                    {orderData.products && orderData.buyQuantity && (
+                        <div className="order-total">
+                            <strong>Total: ${calculateTotal().toFixed(2)}</strong>
+                        </div>
+                    )}
                 </div>
 
                 <div className="order-section">
