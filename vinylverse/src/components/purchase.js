@@ -75,7 +75,8 @@ const Purchase = () => {
             <form onSubmit={handleSubmit}> 
                 {products.map((product, index) => (
                     <div key={product.id} className="form-row">
-                        <label>{product.name}: </label>
+                        <label>{product.name}</label>
+                        <div className="product-meta">In stock: {product.availableQuantity ?? 0}</div>
                         <input
                             type="number"
                             min="0"
