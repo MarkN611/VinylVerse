@@ -62,8 +62,8 @@ const ViewOrder = () => {
                     email: orderData.shipping?.email || ''
                 },
                 shipping: {
-                    address1: orderData.shipping?.addressLine1 || '',
-                    address2: orderData.shipping?.addressLine2 || '',
+                    address1: orderData.shipping?.address1 || '',
+                    address2: orderData.shipping?.address2 || '',
                     city: orderData.shipping?.city || '',
                     state: orderData.shipping?.state || '',
                     country: 'USA',
@@ -202,9 +202,9 @@ const ViewOrder = () => {
                         Shipping Information
                     </h2>
                     <div className="shipping-address">
-                        <div className="address-line">{orderData.shipping?.addressLine1 || 'Not provided'}</div>
-                        {orderData.shipping?.addressLine2 && (
-                            <div className="address-line">{orderData.shipping.addressLine2}</div>
+                        <div className="address-line">{orderData.shipping?.address1 || 'Not provided'}</div>
+                        {orderData.shipping?.address2 && (
+                            <div className="address-line">{orderData.shipping.address2}</div>
                         )}
                         <div className="address-line">
                             {orderData.shipping?.city || 'Not provided'}, {orderData.shipping?.state || 'Not provided'} {orderData.shipping?.zip || 'Not provided'}

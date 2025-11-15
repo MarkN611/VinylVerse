@@ -8,11 +8,13 @@ const ShippingEntry = () => {
 
   const [shipping, setShipping] = useState({
     name: "",
-    addressLine1: "",
-    addressLine2: "",
+    address1: "",
+    address2: "",
     city: "",
     state: "",
-    zip: ""
+    country: "",
+    zip: "",
+    email: ""
   });
 
   const handleChange = (e) => {
@@ -39,21 +41,21 @@ const ShippingEntry = () => {
             required
           />
 
-          <label htmlFor="addressLine1">Address Line 1:</label>
+          <label htmlFor="address1">Address Line 1:</label>
           <input
-            id="addressLine1"
-            name="addressLine1"
+            id="address1"
+            name="address1"
             onChange={handleChange}
-            value={shipping.addressLine1}
+            value={shipping.address1}
             required
           />
 
-          <label htmlFor="addressLine2">Address Line 2:</label>
+          <label htmlFor="address2">Address Line 2:</label>
           <input
-            id="addressLine2"
-            name="addressLine2"
+            id="address2"
+            name="address2"
             onChange={handleChange}
-            value={shipping.addressLine2}
+            value={shipping.address2}
           />
 
           <label htmlFor="city">City:</label>
@@ -74,6 +76,15 @@ const ShippingEntry = () => {
             required
           />
 
+          <label htmlFor="country">Country:</label>
+          <input
+            id="country"
+            name="country"
+            onChange={handleChange}
+            value={shipping.country}
+            required
+          />
+
           <label htmlFor="zip">ZIP Code:</label>
           <input
             id="zip"
@@ -83,6 +94,15 @@ const ShippingEntry = () => {
             title="Please enter a 5-digit ZIP code"
             onChange={handleChange}
             value={shipping.zip}
+            required
+          />
+
+          <label htmlFor="email">Email:</label>
+          <input
+            id="email"
+            name="email"
+            onChange={handleChange}
+            value={shipping.email}
             required
           />
 
