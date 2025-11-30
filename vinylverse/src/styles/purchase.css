@@ -97,3 +97,8 @@
 .purchase .button:active {
     transform: translateY(-1px);
 }
+
+.purchase .product-meta {
+    width: 10rem;
+    text-align: left;
+}

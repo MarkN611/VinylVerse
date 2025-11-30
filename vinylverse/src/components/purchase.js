@@ -76,7 +76,7 @@ const Purchase = () => {
                 {products.map((product, index) => (
                     <div key={product.id} className="form-row">
                         <label>{product.name}</label>
-                        <div className="product-meta">In stock: {product.availableQuantity ?? 0}</div>
+                        <div className="product-meta">In stock: {product.availableQuantity ?? 0} <br/> Price: ${product.price?.toFixed(2) ?? 0.00}</div>
                         <input
                             type="number"
                             min="0"
